@@ -1,6 +1,6 @@
 /*
   ============================================================================
-  DERMA CARE BEAUTY — single source of truth for business information.
+  DERMACARE BEAUTY CLINIC — single source of truth for business information.
   ============================================================================
   Every factual claim on the site is read from this file so non-developers can
   update it without touching components.
@@ -18,6 +18,8 @@ export type SocialNetwork = 'instagram' | 'facebook' | 'tiktok' | 'snapchat'
 type BusinessConfig = {
   name: L10n
   shortName: L10n
+  /** The brand's own strapline, exactly as printed on the packaging. */
+  tagline: string
   descriptor: L10n
   country: L10n
   siteUrl: string
@@ -34,8 +36,10 @@ type BusinessConfig = {
 }
 
 export const business: BusinessConfig = {
-  name: { ar: 'ديرما كير بيوتي', en: 'Derma Care Beauty' },
-  shortName: { ar: 'ديرما كير', en: 'Derma Care' },
+  // Spelling taken from the product packaging.
+  name: { ar: 'ديرما كير بيوتي كلينك', en: 'Dermacare Beauty Clinic' },
+  shortName: { ar: 'ديرما كير', en: 'Dermacare' },
+  tagline: 'your beauty is our duty.',
 
   /** Short descriptor used in the document title and structured data. */
   descriptor: {

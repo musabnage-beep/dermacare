@@ -36,12 +36,12 @@ export function Logo({ tone = 'dark', className = '' }: LogoProps) {
       <span
         className={`text-[1.0625rem] font-extrabold tracking-[0.02em] sm:text-[1.1875rem] ${primary}`}
       >
-        {lang === 'ar' ? 'ديرما كير' : 'DERMA CARE'}
+        {lang === 'ar' ? 'ديرما كير' : 'DERMACARE'}
       </span>
       <span
-        className={`mt-1 text-[0.5625rem] font-semibold uppercase tracking-[0.42em] sm:text-[0.625rem] ${secondary}`}
+        className={`mt-1 text-[0.5625rem] font-semibold tracking-[0.42em] uppercase sm:text-[0.625rem] ${secondary}`}
       >
-        {lang === 'ar' ? 'بيوتي' : 'Beauty'}
+        {lang === 'ar' ? 'بيوتي كلينك' : 'Beauty Clinic'}
       </span>
     </span>
   )

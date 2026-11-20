@@ -18,7 +18,11 @@ export function Footer() {
       <div className="shell grid grid-cols-4 gap-x-6 gap-y-12 py-16 lg:grid-cols-12 lg:gap-x-8 lg:py-20">
         <div className="col-span-4 lg:col-span-5">
           <Logo tone="light" />
-          <p className="mt-6 max-w-[34ch] text-sm leading-[1.75] text-white/60">
+          {/* The brand's own strapline, as printed on the packaging. */}
+          <p lang="en" dir="ltr" className="mt-4 text-sm text-teal-muted italic">
+            {business.tagline}
+          </p>
+          <p className="mt-4 max-w-[34ch] text-sm leading-[1.75] text-white/60">
             {t('footer.tagline')}
           </p>
           <div className="mt-8">

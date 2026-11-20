@@ -3,8 +3,8 @@ import { business, socialLinks } from '../config/business'
 import { useLanguage } from '../i18n/useLanguage'
 
 const descriptions = {
-  ar: 'ديرما كير بيوتي — عيادة تجميل ومنتجات عناية بالبشرة في السودان. مجموعة مختارة من خطوات العناية اليومية مع نصيحة واضحة ومتابعة بعد الشراء.',
-  en: 'Derma Care Beauty — a Sudanese beauty clinic and skincare range. A carefully selected set of daily care steps, with clear advice and follow-up after purchase.',
+  ar: 'ديرما كير بيوتي كلينك — عيادة تجميل ومنتجات عناية بالبشرة في السودان. تحضيرات نعدّها في العيادة مع نصيحة واضحة ومتابعة بعد الشراء.',
+  en: 'Dermacare Beauty Clinic — a Sudanese beauty clinic and skincare range. Preparations made at the clinic, with clear advice and follow-up after purchase.',
 } as const
 
 /** Upserts a `<meta>` tag by `name` or `property`. */

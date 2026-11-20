@@ -16,63 +16,54 @@ export type Product = {
 }
 
 /*
-  These entries describe the CARE CATEGORIES the brand stocks, not specific
-  branded SKUs. No product names, prices, ingredients or benefit claims are
-  invented. Replace an entry with real catalogue data by filling `price` and
-  `url` and pointing `nameKey`/`bodyKey` at the official copy.
+  The brand's actual range, photographed by the brand. Every name is read
+  straight off the packaging; the descriptions only restate what the label or
+  the brand's own posts say. Nothing about ingredients, results or price is
+  invented — fill `price` and `url` once the shop confirms them.
 */
 export const products: readonly Product[] = [
   {
-    id: 'cleanser',
-    nameKey: 'product.cleanser.name',
-    bodyKey: 'product.cleanser.body',
-    image: '/images/product-cleanser.webp',
-    altKey: 'product.cleanser.name',
+    id: 'vitamin-c',
+    nameKey: 'product.vitaminC.name',
+    bodyKey: 'product.vitaminC.body',
+    image: '/images/products/vitamin-c.webp',
+    altKey: 'product.vitaminC.alt',
     price: null,
     url: '',
   },
   {
-    id: 'toner',
-    nameKey: 'product.toner.name',
-    bodyKey: 'product.toner.body',
-    image: '/images/product-toner.webp',
-    altKey: 'product.toner.name',
+    id: 'pigmentation',
+    nameKey: 'product.pigmentation.name',
+    bodyKey: 'product.pigmentation.body',
+    image: '/images/products/pigmentation.webp',
+    altKey: 'product.pigmentation.alt',
     price: null,
     url: '',
   },
   {
-    id: 'serum',
-    nameKey: 'product.serum.name',
-    bodyKey: 'product.serum.body',
-    image: '/images/product-serum.webp',
-    altKey: 'product.serum.name',
+    id: 'caffeine-gel',
+    nameKey: 'product.caffeineGel.name',
+    bodyKey: 'product.caffeineGel.body',
+    image: '/images/products/caffeine-gel.webp',
+    altKey: 'product.caffeineGel.alt',
     price: null,
     url: '',
   },
   {
-    id: 'moisturizer',
-    nameKey: 'product.moisturizer.name',
-    bodyKey: 'product.moisturizer.body',
-    image: '/images/product-moisturizer.webp',
-    altKey: 'product.moisturizer.name',
+    id: 'mango-exfoliant',
+    nameKey: 'product.mangoExfoliant.name',
+    bodyKey: 'product.mangoExfoliant.body',
+    image: '/images/products/mango-exfoliant.webp',
+    altKey: 'product.mangoExfoliant.alt',
     price: null,
     url: '',
   },
   {
-    id: 'sunscreen',
-    nameKey: 'product.sunscreen.name',
-    bodyKey: 'product.sunscreen.body',
-    image: '/images/product-sunscreen.webp',
-    altKey: 'product.sunscreen.name',
-    price: null,
-    url: '',
-  },
-  {
-    id: 'bodycare',
-    nameKey: 'product.bodycare.name',
-    bodyKey: 'product.bodycare.body',
-    image: '/images/product-bodycare.webp',
-    altKey: 'product.bodycare.name',
+    id: 'body-exfoliant',
+    nameKey: 'product.bodyExfoliant.name',
+    bodyKey: 'product.bodyExfoliant.body',
+    image: '/images/products/body-exfoliant.webp',
+    altKey: 'product.bodyExfoliant.alt',
     price: null,
     url: '',
   },

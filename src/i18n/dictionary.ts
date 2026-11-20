@@ -16,7 +16,10 @@ export const dictionary = {
   'nav.primary': { ar: 'التنقل الرئيسي', en: 'Primary navigation' },
   'nav.mobile': { ar: 'تنقل سريع', en: 'Quick navigation' },
   'nav.skip': { ar: 'تخطي إلى المحتوى', en: 'Skip to content' },
-  'nav.home.aria': { ar: 'ديرما كير بيوتي — الصفحة الرئيسية', en: 'Derma Care Beauty — home' },
+  'nav.home.aria': {
+    ar: 'ديرما كير بيوتي كلينك — الصفحة الرئيسية',
+    en: 'Dermacare Beauty Clinic — home',
+  },
 
   // ── Language switcher ─────────────────────────────────────────────────────
   'lang.label': { ar: 'اللغة', en: 'Language' },
@@ -33,8 +36,8 @@ export const dictionary = {
   'hero.title.line2': { ar: 'بخبرة', en: 'clinical' },
   'hero.title.accent': { ar: 'متخصصة', en: 'expertise' },
   'hero.subtitle': {
-    ar: 'Derma Care Beauty',
-    en: 'ديرما كير بيوتي',
+    ar: 'Dermacare Beauty Clinic',
+    en: 'ديرما كير بيوتي كلينك',
   },
   'hero.body': {
     ar: 'نجمع بين خبرة عيادة التجميل ومنتجات العناية المختارة بعناية، لنقدّم لك روتيناً واضحاً وبسيطاً تثقين به كل يوم.',
@@ -60,8 +63,8 @@ export const dictionary = {
     en: 'A Sudanese beauty & skincare brand',
   },
   'intro.body1': {
-    ar: 'ديرما كير بيوتي علامة سودانية تجمع بين عيادة التجميل ومنتجات العناية بالبشرة في مكان واحد. نؤمن أن العناية الحقيقية تبدأ بفهم بشرتك، لا بتجربة كل ما هو جديد.',
-    en: 'Derma Care Beauty is a Sudanese brand that brings a beauty clinic and a skincare range together under one name. We believe real care starts with understanding your skin, not with trying everything new.',
+    ar: 'ديرما كير بيوتي كلينك علامة سودانية تجمع بين عيادة التجميل ومنتجات العناية بالبشرة في مكان واحد. نؤمن أن العناية الحقيقية تبدأ بفهم بشرتك، لا بتجربة كل ما هو جديد.',
+    en: 'Dermacare Beauty Clinic is a Sudanese brand that brings a beauty clinic and a skincare range together under one name. We believe real care starts with understanding your skin, not with trying everything new.',
   },
   'intro.body2': {
     ar: 'نختار ما نقدّمه بعناية، ونشرح لك كيف تستخدمينه، ونبقى معك بعد الشراء. هدفنا تجربة واضحة ومريحة تمنحك الثقة في كل خطوة من روتينك.',
@@ -89,54 +92,80 @@ export const dictionary = {
 
   // ── Products ──────────────────────────────────────────────────────────────
   'products.eyebrow': { ar: 'المنتجات', en: 'The range' },
-  'products.title': { ar: 'فئات العناية التي نقدّمها', en: 'The categories we offer' },
+  'products.title': { ar: 'تحضيرات ديرما كير', en: 'The Dermacare preparations' },
   'products.lead': {
-    ar: 'مجموعة مرتّبة حسب خطوات الروتين اليومي. اسألينا عن أي فئة وسنرشدك إلى المنتج المناسب لبشرتك.',
-    en: 'A range organised around the steps of a daily routine. Ask us about any category and we will guide you to the right product for your skin.',
+    ar: 'تركيبات نحضّرها في العيادة ونتابع نتيجتها معك. اسألينا عن أي منتج وسنرشدك إلى المناسب لبشرتك.',
+    en: 'Preparations we make at the clinic and follow up on with you. Ask us about any of them and we will point you to the one that suits your skin.',
   },
   'products.view': { ar: 'عرض التفاصيل', en: 'View Product' },
-  'products.inquire': { ar: 'استفسري عن الفئة', en: 'Ask about this' },
+  'products.inquire': { ar: 'استفسري عن المنتج', en: 'Ask about this' },
   'products.addToCart': { ar: 'أضيفي إلى السلة', en: 'Add to Cart' },
   'products.priceOnRequest': { ar: 'السعر عند الطلب', en: 'Price on request' },
   'products.note': {
-    ar: 'الفئات أعلاه تمثّل خطوات العناية التي نوفّرها. يتم تحديث الأسماء والأسعار الرسمية عند توفّرها من المتجر.',
-    en: 'The categories above describe the care steps we stock. Official product names and prices are published here once the shop provides them.',
+    ar: 'الأسماء والصور مأخوذة من عبوات المنتجات نفسها. تُنشر الأسعار الرسمية هنا عند تأكيدها من العيادة.',
+    en: 'Names and photography are taken from the products’ own packaging. Official prices are published here once the clinic confirms them.',
   },
   'products.all': { ar: 'تواصلي لعرض المجموعة كاملة', en: 'Contact us for the full range' },
 
-  'product.cleanser.name': { ar: 'غسول الوجه', en: 'Facial cleanser' },
-  'product.cleanser.body': {
-    ar: 'الخطوة الأولى في الروتين: تنظيف لطيف يهيّئ البشرة لما بعده.',
-    en: 'The first step of the routine: a gentle cleanse that prepares the skin for everything after it.',
+  /*
+    Names are transcribed from the packaging. Bodies only restate what the
+    label itself says — no ingredient, dosage or result claim is added.
+  */
+  'product.vitaminC.name': { ar: 'تفتيح ونضارة — Vit C', en: 'Brightening & Radiance — Vit C' },
+  'product.vitaminC.body': {
+    ar: 'كريم فيتامين سي. تذكر العبوة أنه يوحّد لون البشرة ويحفّز الكولاجين.',
+    en: 'A vitamin C cream. The label states that it evens skin tone and stimulates collagen.',
   },
-  'product.toner.name': { ar: 'التونر', en: 'Toner' },
-  'product.toner.body': {
-    ar: 'يوازن البشرة بعد التنظيف ويساعد على امتصاص المنتجات التالية.',
-    en: 'Balances the skin after cleansing and helps the next products absorb.',
+  'product.vitaminC.alt': {
+    ar: 'عبوة كريم «تفتيح ونضارة» من ديرما كير بيوتي كلينك',
+    en: 'Dermacare Beauty Clinic “Brightening & Radiance” cream jar',
   },
-  'product.serum.name': { ar: 'السيروم', en: 'Serum' },
-  'product.serum.body': {
-    ar: 'تركيز مخصّص يُختار حسب حالة بشرتك وهدف روتينك.',
-    en: 'A targeted concentrate chosen to match your skin and the goal of your routine.',
+
+  'product.pigmentation.name': { ar: 'علاج تصبغات وتفتيح', en: 'Pigmentation & Brightening' },
+  'product.pigmentation.body': {
+    ar: 'تركيبة للتصبغات. تذكر العبوة تقليل آثار الكلف والنمش وتحفيز تجدّد الخلايا.',
+    en: 'A preparation for pigmentation. The label mentions reducing the look of melasma and freckles and supporting cell renewal.',
   },
-  'product.moisturizer.name': { ar: 'المرطّب', en: 'Moisturiser' },
-  'product.moisturizer.body': {
-    ar: 'يحفظ ترطيب البشرة ويُغلق خطوات الروتين اليومي.',
-    en: 'Holds moisture in the skin and closes the daily routine.',
+  'product.pigmentation.alt': {
+    ar: 'عبوة «علاج تصبغات وتفتيح» من ديرما كير بيوتي كلينك',
+    en: 'Dermacare Beauty Clinic “Pigmentation & Brightening” jar',
   },
-  'product.sunscreen.name': { ar: 'واقي الشمس', en: 'Sunscreen' },
-  'product.sunscreen.body': {
-    ar: 'الخطوة الأهم في المناخ السوداني، وتُستخدم كل صباح.',
-    en: 'The most important step in the Sudanese climate, used every morning.',
+
+  'product.caffeineGel.name': { ar: 'جل الكافيين', en: 'Caffeine Gel' },
+  'product.caffeineGel.body': {
+    ar: 'جل بمضخّة مخصّص لمنطقة ما حول العين، حسب ما هو مدوّن على العبوة.',
+    en: 'A pump gel made for the area around the eyes, as stated on the bottle.',
   },
-  'product.bodycare.name': { ar: 'عناية الجسم', en: 'Body care' },
-  'product.bodycare.body': {
-    ar: 'تنظيف وترطيب للجسم بنفس معايير العناية بالوجه.',
-    en: 'Cleansing and moisturising for the body, held to the same standard as facial care.',
+  'product.caffeineGel.alt': {
+    ar: 'عبوة «Caffeine gel» من ديرما كير بيوتي كلينك',
+    en: 'Dermacare Beauty Clinic “Caffeine gel” pump bottle',
+  },
+
+  'product.mangoExfoliant.name': { ar: 'تقشير وتفتيح — المانجو', en: 'Exfoliate & Brighten — Mango' },
+  'product.mangoExfoliant.body': {
+    ar: 'مقشّر بخلاصة المانجو من مجموعة «تقشير وتفتيح».',
+    en: 'A mango scrub from the “Exfoliate & Brighten” line.',
+  },
+  'product.mangoExfoliant.alt': {
+    ar: 'عبوة مقشّر المانجو من ديرما كير بيوتي كلينك بجانب ثمرة مانجو',
+    en: 'Dermacare Beauty Clinic mango scrub jar beside a cut mango',
+  },
+
+  'product.bodyExfoliant.name': {
+    ar: 'تقشير وتفتيح — المفاصل والركب والأكواع',
+    en: 'Exfoliate & Brighten — Joints, Knees & Elbows',
+  },
+  'product.bodyExfoliant.body': {
+    ar: 'تركيبة مخصّصة للمناطق الداكنة في المفاصل والركب والأكواع، كما هو مدوّن على العبوة.',
+    en: 'A preparation for the darker areas at the joints, knees and elbows, as stated on the jar.',
+  },
+  'product.bodyExfoliant.alt': {
+    ar: 'عبوة «تقشير وتفتيح» للمفاصل والركب والأكواع على منشفة بيضاء',
+    en: 'Dermacare Beauty Clinic joints, knees and elbows jar resting on a white towel',
   },
 
   // ── Why choose us ─────────────────────────────────────────────────────────
-  'why.eyebrow': { ar: 'لماذا ديرما كير', en: 'Why Derma Care' },
+  'why.eyebrow': { ar: 'لماذا ديرما كير', en: 'Why Dermacare' },
   'why.title': { ar: 'عناية مبنية على الوضوح', en: 'Care built on clarity' },
   'why.lead': {
     ar: 'لا نَعِدُ بالمعجزات. نَعِدُ بالصدق في النصيحة، والجودة في الاختيار، والاحترام في التعامل.',
@@ -216,8 +245,8 @@ export const dictionary = {
     en: 'Why is it still so hard for many women in Sudan to find skincare they can trust? Too many products, conflicting advice, and big promises with no follow-up.',
   },
   'about.body2': {
-    ar: 'أنشأنا ديرما كير بيوتي للإجابة على هذا السؤال عملياً: عيادة تجميل تفهم البشرة، ومجموعة منتجات مختارة تُكمّل ما نقدّمه، وتعامل يحترم وقتك وثقتك.',
-    en: 'We built Derma Care Beauty to answer that in practice: a beauty clinic that understands skin, a selected range that complements the work we do, and a way of working that respects your time and your trust.',
+    ar: 'أنشأنا ديرما كير بيوتي كلينك للإجابة على هذا السؤال عملياً: عيادة تجميل تفهم البشرة، ومجموعة منتجات مختارة تُكمّل ما نقدّمه، وتعامل يحترم وقتك وثقتك.',
+    en: 'We built Dermacare Beauty Clinic to answer that in practice: a beauty clinic that understands skin, a selected range that complements the work we do, and a way of working that respects your time and your trust.',
   },
   'about.body3': {
     ar: 'نكتب هذه القصة ونحن في بدايتها، وسنوسّعها كلما كبرت تجربتنا معك.',
@@ -253,8 +282,8 @@ export const dictionary = {
     en: 'Official phone numbers and social accounts will be published here once confirmed by the brand.',
   },
   'contact.whatsapp.prefill': {
-    ar: 'مرحباً ديرما كير بيوتي، لدي سؤال عن العناية بالبشرة.',
-    en: 'Hello Derma Care Beauty, I have a question about skincare.',
+    ar: 'مرحباً ديرما كير بيوتي كلينك، لدي سؤال عن العناية بالبشرة.',
+    en: 'Hello Dermacare Beauty Clinic, I have a question about skincare.',
   },
 
   // ── Footer ────────────────────────────────────────────────────────────────

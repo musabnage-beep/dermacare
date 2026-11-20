@@ -50,10 +50,11 @@ export const business: BusinessConfig = {
   country: { ar: 'السودان', en: 'Sudan' } satisfies L10n,
 
   /**
-   * Canonical origin. Update once after the first production deploy — it feeds
-   * the canonical URL, Open Graph tags and JSON-LD.
+   * Canonical origin, no trailing slash. Feeds the canonical URL, Open Graph
+   * tags and JSON-LD. Currently the GitHub Pages address — change this (and
+   * `VITE_BASE` at build time) once a custom domain is pointed at the site.
    */
-  siteUrl: 'https://dermacarebeauty.sd',
+  siteUrl: 'https://musabnage-beep.github.io/dermacare',
 
   /**
    * Original brand logo. Drop the official file into `public/brand/` and point

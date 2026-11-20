@@ -12,6 +12,19 @@
       "runtimeExecutable": "node",
       "runtimeArgs": ["node_modules/vite/bin/vite.js", "preview"],
       "port": 4173
+    },
+    {
+      "name": "derma-pages",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "node_modules/vite/bin/vite.js",
+        "preview",
+        "--base",
+        "/dermacare/",
+        "--port",
+        "4273"
+      ],
+      "port": 4273
     }
   ]
 }

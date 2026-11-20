@@ -1,0 +1,168 @@
+@import 'tailwindcss';
+
+/*
+  DERMA CARE BEAUTY — design tokens
+  --------------------------------------------------------------
+  Direction: "Modern Clinical Beauty".
+  Spacing follows an 8px system: only use even Tailwind spacing
+  utilities (2 = 8px, 4 = 16px, 6 = 24px, 8 = 32px, 12 = 48px...).
+*/
+@theme {
+  /* Surfaces */
+  --color-white: #ffffff;
+  --color-ivory: #fbf9f6;
+  --color-ivory-deep: #f4f0ea;
+  --color-mist: #f1f7f7;
+
+  /* Brand turquoise / clinical blue */
+  --color-teal: #0f6f78;
+  --color-teal-deep: #0a545c;
+  --color-teal-bright: #19929d;
+  /* Decorative only (hairlines, icons, text on `ink`) — too light for body
+     text on a light surface. Use `teal` for that. */
+  --color-teal-muted: #7fb3b8;
+  --color-teal-tint: #dcebec;
+
+  /* Text */
+  --color-ink: #1b2326;
+  --color-ink-soft: #556166;
+  /* Darkest of the three greys that still clears WCAG AA (4.5:1) on white,
+     ivory and mist — the three light surfaces it is used on. */
+  --color-ink-faint: #646e72;
+
+  /* Lines */
+  --color-line: #e5e1da;
+  --color-line-teal: #cfe2e3;
+
+  /* Type */
+  --font-sans: 'Manrope', 'IBM Plex Sans Arabic', ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: 'IBM Plex Sans Arabic', 'Manrope', ui-sans-serif, system-ui, sans-serif;
+
+  /* Editorial display scale */
+  --text-display: 4.25rem;
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.03em;
+  --text-headline: 2.75rem;
+  --text-headline--line-height: 1.12;
+  --text-headline--letter-spacing: -0.02em;
+  --text-title: 1.5rem;
+  --text-title--line-height: 1.28;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Offset for the sticky header when jumping to an anchor. */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-white);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Arabic gets its own stack and slightly looser leading. */
+  [dir='rtl'] body {
+    font-family: var(--font-arabic);
+    letter-spacing: 0;
+  }
+
+  [dir='rtl'] h1,
+  [dir='rtl'] h2,
+  [dir='rtl'] h3,
+  [dir='rtl'] h4 {
+    /* Arabic letterforms need no negative tracking. */
+    letter-spacing: 0;
+    line-height: 1.28;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-teal-tint);
+    color: var(--color-teal-deep);
+  }
+
+  img {
+    /* Avoids a white flash while images stream in. */
+    background-color: var(--color-ivory-deep);
+  }
+}
+
+@layer components {
+  /* 1200px editorial shell used by every section. */
+  .shell {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .shell {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  /* Small-caps label used above section headlines. */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-teal);
+  }
+
+  [dir='rtl'] .eyebrow {
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: 0.8125rem;
+  }
+
+  .eyebrow::before {
+    content: '';
+    inline-size: 2rem;
+    block-size: 1px;
+    background-color: var(--color-teal-muted);
+    flex: none;
+  }
+}
+
+@layer utilities {
+  /* Keeps content clear of the mobile bottom navigation. */
+  .pb-safe-nav {
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+  }
+
+  @media (min-width: 768px) {
+    .pb-safe-nav {
+      padding-bottom: 0;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

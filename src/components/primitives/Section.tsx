@@ -29,7 +29,7 @@ export function Section({
     <section
       id={id}
       aria-labelledby={labelledBy}
-      className={`py-20 lg:py-32 ${tones[tone]} ${className}`}
+      className={`py-14 sm:py-20 lg:py-32 ${tones[tone]} ${className}`}
     >
       <div className="shell">{children}</div>
     </section>
@@ -61,7 +61,7 @@ export function SectionHeading({
       <p className="eyebrow">{eyebrow}</p>
       <h2
         id={id}
-        className={`mt-6 max-w-[18ch] text-[2rem] leading-[1.14] font-extrabold tracking-[-0.02em] text-balance sm:text-[2.5rem] lg:text-headline ${
+        className={`mt-4 max-w-[18ch] text-[1.75rem] leading-[1.18] font-extrabold tracking-[-0.02em] text-balance sm:mt-6 sm:text-[2.5rem] sm:leading-[1.14] lg:text-headline ${
           tone === 'light' ? 'text-white' : 'text-ink'
         } ${align === 'center' ? 'max-w-[24ch]' : ''}`}
       >
@@ -69,7 +69,7 @@ export function SectionHeading({
       </h2>
       {lead !== undefined && (
         <p
-          className={`mt-6 max-w-[52ch] text-base leading-[1.75] sm:text-[1.0625rem] ${
+          className={`mt-4 max-w-[52ch] text-[0.9375rem] leading-[1.75] sm:mt-6 sm:text-[1.0625rem] ${
             tone === 'light' ? 'text-white/70' : 'text-ink-soft'
           }`}
         >

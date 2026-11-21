@@ -19,7 +19,7 @@ export function Products() {
         lead={t('products.lead')}
       />
 
-      <ul className="mt-16 grid grid-cols-4 gap-x-6 gap-y-12 lg:mt-20 lg:grid-cols-12 lg:gap-x-8">
+      <ul className="mt-10 grid grid-cols-4 gap-x-4 gap-y-10 sm:mt-16 sm:gap-x-6 sm:gap-y-12 lg:mt-20 lg:grid-cols-12 lg:gap-x-8">
         {products.map((product, index) => (
           <Reveal
             as="li"
@@ -32,7 +32,10 @@ export function Products() {
         ))}
       </ul>
 
-      <Reveal delay={0.1} className="mt-16 flex flex-col items-start gap-8 border-t border-line pt-10 sm:flex-row sm:items-center sm:justify-between">
+      <Reveal
+        delay={0.1}
+        className="mt-10 flex flex-col items-start gap-6 border-t border-line pt-8 sm:mt-16 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:pt-10"
+      >
         <p className="max-w-[60ch] text-sm leading-relaxed text-ink-faint">
           {t('products.note')}
         </p>
@@ -60,7 +63,7 @@ function ProductCard({ product }: { product: Product }) {
 
   return (
     <article className="group flex h-full flex-col">
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden rounded-2xl">
         <Figure
           src={product.image}
           alt={t(product.altKey)}

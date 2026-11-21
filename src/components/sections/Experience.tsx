@@ -12,22 +12,22 @@ export function Experience() {
 
   return (
     <section id="experience" aria-labelledby="experience-title" className="bg-ink text-white">
-      <div className="shell grid grid-cols-4 gap-x-6 gap-y-16 py-20 lg:grid-cols-12 lg:gap-x-8 lg:py-32">
+      <div className="shell grid grid-cols-4 gap-x-6 gap-y-12 py-14 sm:gap-y-16 sm:py-20 lg:grid-cols-12 lg:gap-x-8 lg:py-32">
         <div className="col-span-4 lg:col-span-5 lg:self-center">
           <Reveal>
             <p className="eyebrow !text-teal-muted">{t('exp.eyebrow')}</p>
             <h2
               id="experience-title"
-              className="mt-6 text-[1.875rem] leading-[1.16] font-extrabold tracking-[-0.02em] text-balance sm:text-[2.25rem] lg:text-[2.5rem]"
+              className="mt-4 text-[1.75rem] leading-[1.18] font-extrabold tracking-[-0.02em] text-balance sm:mt-6 sm:text-[2.25rem] sm:leading-[1.16] lg:text-[2.5rem]"
             >
               {t('exp.title')}
             </h2>
-            <p className="mt-8 max-w-[46ch] text-base leading-[1.8] text-white/65 sm:text-[1.0625rem]">
+            <p className="mt-4 max-w-[46ch] text-[0.9375rem] leading-[1.8] text-white/65 sm:mt-8 sm:text-[1.0625rem]">
               {t('exp.body')}
             </p>
           </Reveal>
 
-          <ol className="mt-12 space-y-8">
+          <ol className="mt-10 space-y-8 sm:mt-12">
             {experienceSteps.map((step, index) => (
               <Reveal as="li" key={step.id} delay={index * 0.1}>
                 <div className="flex gap-6">

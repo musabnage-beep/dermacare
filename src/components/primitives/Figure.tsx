@@ -50,7 +50,9 @@ export function Figure({
   const [failed, setFailed] = useState(false)
 
   return (
-    <div className={`relative overflow-hidden bg-ivory-deep ${ratioClass[ratio]} ${className}`}>
+    <div
+      className={`relative overflow-hidden rounded-2xl bg-ivory-deep ${ratioClass[ratio]} ${className}`}
+    >
       {failed ? (
         <div className="absolute inset-0 grid place-items-center bg-mist px-6 text-center text-xs font-medium tracking-wide text-teal">
           {t('common.imageUnavailable')}

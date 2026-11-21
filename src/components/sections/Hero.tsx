@@ -22,22 +22,26 @@ export function Hero() {
 
   return (
     <section id="home" aria-labelledby="hero-title" className="relative overflow-hidden bg-white">
-      {/* Soft clinical wash behind the headline column. */}
+      {/* Soft clinical wash. Full width on phones, where the column is centred;
+          confined to the headline column once the layout splits in two. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 start-0 w-[62%] bg-gradient-to-b from-mist/70 to-transparent"
+        className="pointer-events-none absolute inset-y-0 start-0 w-full bg-gradient-to-b from-mist/70 to-transparent lg:w-[62%]"
       />
 
-      <div className="shell relative grid grid-cols-4 gap-x-6 gap-y-12 pt-16 pb-20 lg:grid-cols-12 lg:items-center lg:gap-x-8 lg:pt-24 lg:pb-32">
-        <div className="col-span-4 lg:col-span-6 xl:col-span-6">
-          <m.p {...rise(0.05)} className="eyebrow">
+      <div className="shell relative grid grid-cols-4 gap-x-6 gap-y-10 pt-10 pb-16 sm:pt-14 lg:grid-cols-12 lg:items-center lg:gap-x-8 lg:gap-y-12 lg:pt-24 lg:pb-32">
+        <div className="col-span-4 text-center lg:col-span-6 lg:text-start xl:col-span-6">
+          {/* The leading rule is dropped while the column is centred: this
+              eyebrow wraps to two lines in English, which would leave the rule
+              hanging beside the first line only. */}
+          <m.p {...rise(0.05)} className="eyebrow max-lg:before:hidden">
             {t('hero.eyebrow')}
           </m.p>
 
           <m.h1
             id="hero-title"
             {...rise(0.14)}
-            className="mt-8 text-[2.625rem] leading-[1.08] font-extrabold tracking-[-0.03em] text-ink text-balance sm:text-[3.5rem] lg:text-display"
+            className="mt-5 text-[2.125rem] leading-[1.14] font-extrabold tracking-[-0.03em] text-ink text-balance sm:mt-7 sm:text-[3rem] sm:leading-[1.08] lg:mt-8 lg:text-display"
           >
             {t('hero.title.line1')}
             <br />
@@ -57,27 +61,32 @@ export function Hero() {
           <m.p
             {...rise(0.24)}
             lang={lang === 'ar' ? 'en' : 'ar'}
-            className="mt-8 text-sm font-semibold tracking-[0.2em] text-ink-faint uppercase"
+            className="mt-5 text-xs font-semibold tracking-[0.14em] text-ink-faint uppercase sm:mt-7 sm:text-sm sm:tracking-[0.2em]"
           >
             {t('hero.subtitle')}
           </m.p>
 
           <m.p
             {...rise(0.32)}
-            className="mt-6 max-w-[48ch] text-base leading-[1.8] text-ink-soft sm:text-[1.0625rem]"
+            className="mx-auto mt-5 max-w-[48ch] text-[0.9375rem] leading-[1.8] text-ink-soft sm:mt-6 sm:text-[1.0625rem] lg:mx-0"
           >
             {t('hero.body')}
           </m.p>
 
-          <m.div {...rise(0.42)} className="mt-10 flex flex-wrap items-center gap-4">
-            <ButtonLink href="#products" size="lg">
+          {/* Stacked, full-width pills on phones so the primary action is the
+              obvious one; side by side from the small breakpoint up. */}
+          <m.div
+            {...rise(0.42)}
+            className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center lg:justify-start"
+          >
+            <ButtonLink href="#products" size="lg" className="w-full sm:w-auto">
               {t('hero.cta.primary')}
               <ArrowRight
                 aria-hidden="true"
                 className="size-4 transition-transform duration-300 ease-[var(--ease-out-soft)] group-hover:translate-x-1 rtl:-scale-x-100"
               />
             </ButtonLink>
-            <ButtonLink href="#about" variant="secondary" size="lg">
+            <ButtonLink href="#about" variant="secondary" size="lg" className="w-full sm:w-auto">
               {t('hero.cta.secondary')}
             </ButtonLink>
           </m.div>
@@ -105,20 +114,25 @@ export function Hero() {
               ratio="portrait"
               priority
               sizes="(min-width: 1024px) 560px, 100vw"
-              className="lg:aspect-[4/5]"
+              className="ring-1 ring-line-teal lg:aspect-[4/5]"
             />
 
-            {/* Trust note — describes how the brand works, no claims invented. */}
+            {/* Trust note — describes how the brand works, no claims invented.
+                Rounded and inset to match the image panel it overlaps. */}
             <m.div
               initial={reduceMotion ? undefined : { opacity: 0, y: 16 }}
               animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.85, ease }}
-              className="mx-4 -mt-12 flex items-start gap-4 border-s-2 border-teal bg-white p-6 shadow-[0_18px_48px_-24px_rgba(27,35,38,0.3)] sm:mx-8 sm:-mt-16 lg:mx-0 lg:-mt-20 lg:me-12"
+              className="relative mx-4 -mt-10 flex items-start gap-4 rounded-2xl border border-line bg-white p-5 text-start shadow-[0_18px_48px_-24px_rgba(27,35,38,0.3)] sm:mx-10 sm:-mt-14 sm:p-6 lg:mx-0 lg:-mt-20 lg:me-12"
             >
-              <ShieldCheck aria-hidden="true" className="mt-0.5 size-6 shrink-0 text-teal" />
+              <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-mist text-teal">
+                <ShieldCheck aria-hidden="true" className="size-5" strokeWidth={1.8} />
+              </span>
               <div>
                 <p className="text-sm font-bold text-ink">{t('hero.badge.title')}</p>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{t('hero.badge.body')}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
+                  {t('hero.badge.body')}
+                </p>
               </div>
             </m.div>
           </div>

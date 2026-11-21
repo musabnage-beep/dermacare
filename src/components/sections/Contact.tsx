@@ -30,7 +30,7 @@ export function Contact() {
                 size="lg"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-10"
+                className="mt-8 w-full sm:mt-10 sm:w-auto"
               >
                 <MessageCircle aria-hidden="true" className="size-4" />
                 {t('contact.whatsapp.action')}
@@ -38,7 +38,7 @@ export function Contact() {
             </Reveal>
           )}
 
-          <Reveal delay={0.18} className="mt-12">
+          <Reveal delay={0.18} className="mt-10 sm:mt-12">
             <SocialLinks label={t('contact.social')} />
           </Reveal>
         </div>
@@ -94,7 +94,7 @@ export function Contact() {
           ) : (
             /* Nothing is invented: until the business confirms its channels
                the panel says so plainly in both languages. */
-            <Reveal className="flex items-start gap-5 border border-line-teal bg-white p-8">
+            <Reveal className="flex items-start gap-5 rounded-2xl border border-line-teal bg-white p-6 sm:p-8">
               <Info aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-teal" />
               <div>
                 <h3 className="text-[1.0625rem] font-bold text-ink">

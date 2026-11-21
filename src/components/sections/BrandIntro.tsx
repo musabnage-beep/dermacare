@@ -30,19 +30,19 @@ export function BrandIntro() {
             <p className="eyebrow">{t('intro.eyebrow')}</p>
             <h2
               id="intro-title"
-              className="mt-6 text-[1.875rem] leading-[1.18] font-extrabold tracking-[-0.02em] text-ink text-balance sm:text-[2.25rem] lg:text-[2.5rem]"
+              className="mt-4 text-[1.75rem] leading-[1.18] font-extrabold tracking-[-0.02em] text-ink text-balance sm:mt-6 sm:text-[2.25rem] lg:text-[2.5rem]"
             >
               {t('intro.title')}
             </h2>
-            <p className="mt-8 text-base leading-[1.8] text-ink-soft sm:text-[1.0625rem]">
+            <p className="mt-4 text-[0.9375rem] leading-[1.8] text-ink-soft sm:mt-8 sm:text-[1.0625rem]">
               {t('intro.body1')}
             </p>
-            <p className="mt-6 text-base leading-[1.8] text-ink-soft sm:text-[1.0625rem]">
+            <p className="mt-4 text-[0.9375rem] leading-[1.8] text-ink-soft sm:mt-6 sm:text-[1.0625rem]">
               {t('intro.body2')}
             </p>
           </Reveal>
 
-          <ul className="mt-12 divide-y divide-line border-t border-line">
+          <ul className="mt-10 divide-y divide-line border-t border-line sm:mt-12">
             {pillars.map((pillar, index) => (
               <Reveal as="li" key={pillar.id} delay={index * 0.08} className="py-6">
                 <div className="flex items-baseline gap-5">

@@ -1,6 +1,7 @@
 import { Footer } from './components/layout/Footer'
 import { Header } from './components/layout/Header'
 import { MobileNav } from './components/layout/MobileNav'
+import { WhatsAppOrder } from './components/layout/WhatsAppOrder'
 import { SeoHead } from './components/SeoHead'
 import { About } from './components/sections/About'
 import { BrandIntro } from './components/sections/BrandIntro'
@@ -38,6 +39,7 @@ export default function App() {
       </main>
 
       <Footer />
+      <WhatsAppOrder />
       <MobileNav />
     </>
   )

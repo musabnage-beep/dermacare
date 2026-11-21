@@ -70,9 +70,9 @@ export const business: BusinessConfig = {
   /** Verified contact channels only. Empty string = hidden in the UI. */
   contact: {
     /** International format, digits only, no '+'. Example: '2499XXXXXXX'. */
-    whatsapp: '',
+    whatsapp: '249912943428',
     /** Display + tel: link. Example: '+249 9XX XXX XXX'. */
-    phone: '',
+    phone: '+249 91 294 3428',
     email: '',
     address: { ar: '', en: '' } satisfies L10n,
     hours: { ar: '', en: '' } satisfies L10n,

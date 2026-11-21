@@ -67,12 +67,17 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <LanguageSwitcher className="hidden sm:inline-flex" />
+          {/* `max-sm:hidden`, not `hidden sm:inline-flex`: both components
+              already carry `inline-flex`, and two plain display utilities on
+              one element are decided by stylesheet order — `inline-flex` wins,
+              so the phone header would show every control at once. A variant
+              always outranks a plain utility, so this hides reliably. */}
+          <LanguageSwitcher className="max-sm:hidden" />
           <ButtonLink
             href={shopHref}
             target={isExternalShop ? '_blank' : undefined}
             rel={isExternalShop ? 'noopener noreferrer' : undefined}
-            className="hidden sm:inline-flex"
+            className="max-sm:hidden"
           >
             {t('nav.shopNow')}
             <ArrowUpRight

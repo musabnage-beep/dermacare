@@ -286,6 +286,13 @@ export const dictionary = {
     en: 'Hello Dermacare Beauty Clinic, I have a question about skincare.',
   },
 
+  // ── Floating WhatsApp order button ────────────────────────────────────────
+  'order.cta': { ar: 'اطلبي عبر واتساب', en: 'Order on WhatsApp' },
+  'order.prefill': {
+    ar: 'مرحباً ديرما كير بيوتي كلينك، أرغب في الطلب.',
+    en: 'Hello Dermacare Beauty Clinic, I would like to place an order.',
+  },
+
   // ── Footer ────────────────────────────────────────────────────────────────
   'footer.tagline': {
     ar: 'عيادة تجميل ومنتجات عناية بالبشرة في السودان.',

@@ -22,12 +22,25 @@ export function Hero() {
 
   return (
     <section id="home" aria-labelledby="hero-title" className="relative overflow-hidden bg-white">
-      {/* Soft clinical wash. Full width on phones, where the column is centred;
-          confined to the headline column once the layout splits in two. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 start-0 w-full bg-gradient-to-b from-mist/70 to-transparent lg:w-[62%]"
-      />
+      {/* Decorative backdrop for the headline column, so the copy sits on a
+          tinted clinical field rather than bare white. Every layer is a tint of
+          an existing token and stays far lighter than `ink`, so the text keeps
+          its AA contrast. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-teal-tint/70 via-mist/70 via-65% to-white lg:bg-gradient-to-br lg:from-teal-tint/80 lg:via-mist/70 lg:via-55% lg:to-white lg:rtl:bg-gradient-to-bl" />
+
+        {/* Soft blooms give the field some depth without a photograph. */}
+        <div className="absolute -top-28 -start-24 size-[26rem] rounded-full bg-teal-tint/70 blur-3xl sm:size-[34rem]" />
+        <div className="absolute top-1/3 -end-24 size-[22rem] rounded-full bg-teal-muted/15 blur-3xl sm:size-[28rem]" />
+
+        {/* Concentric rings echo the clinical mark; desktop only, where there is
+            room for them to read as geometry rather than clutter. */}
+        <div className="absolute top-[8%] start-[4%] hidden size-[32rem] rounded-full border border-line-teal/70 lg:block" />
+        <div className="absolute top-[22%] start-[12%] hidden size-[20rem] rounded-full border border-line-teal/50 lg:block" />
+
+        {/* Fine dot grid, faded out before it reaches the lower copy. */}
+        <div className="absolute inset-0 opacity-40 [background-image:radial-gradient(var(--color-teal-muted)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(to_bottom,black,transparent_65%)]" />
+      </div>
 
       <div className="shell relative grid grid-cols-4 gap-x-6 gap-y-10 pt-10 pb-16 sm:pt-14 lg:grid-cols-12 lg:items-center lg:gap-x-8 lg:gap-y-12 lg:pt-24 lg:pb-32">
         <div className="col-span-4 text-center lg:col-span-6 lg:text-start xl:col-span-6">

@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
-/** The two panels the bottom bar can open. `null` = everything closed. */
-export type ShopPanel = 'favourites' | 'cart' | null
+/** The panels the bottom bar can open. `null` = everything closed. */
+export type ShopPanel = 'favourites' | 'cart' | 'account' | null
 
 export type ShopValue = {
   /** Product ids the visitor has saved, newest last. */

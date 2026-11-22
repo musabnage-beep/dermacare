@@ -61,9 +61,9 @@ export function SectionHeading({
       <p className="eyebrow">{eyebrow}</p>
       <h2
         id={id}
-        className={`mt-4 max-w-[18ch] text-[1.75rem] leading-[1.18] font-extrabold tracking-[-0.02em] text-balance sm:mt-6 sm:text-[2.5rem] sm:leading-[1.14] lg:text-headline ${
+        className={`mt-4 text-[1.75rem] leading-[1.18] font-extrabold tracking-[-0.02em] text-balance sm:mt-6 sm:text-[2.5rem] sm:leading-[1.14] lg:text-headline ${
           tone === 'light' ? 'text-white' : 'text-ink'
-        } ${align === 'center' ? 'max-w-[24ch]' : ''}`}
+        } ${align === 'center' ? 'max-w-[24ch]' : 'max-w-[18ch]'}`}
       >
         {title}
       </h2>

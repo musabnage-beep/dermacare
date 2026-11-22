@@ -11,8 +11,6 @@ export const dictionary = {
   'nav.experience': { ar: 'التجربة', en: 'Experience' },
   'nav.about': { ar: 'من نحن', en: 'About' },
   'nav.contact': { ar: 'تواصل معنا', en: 'Contact' },
-  /** The bottom bar carries five labels, so this one drops the second word. */
-  'nav.contactShort': { ar: 'تواصل', en: 'Contact' },
   'nav.shopNow': { ar: 'تسوّقي الآن', en: 'Shop Now' },
   'nav.menu': { ar: 'القائمة', en: 'Menu' },
   'nav.primary': { ar: 'التنقل الرئيسي', en: 'Primary navigation' },
@@ -34,16 +32,15 @@ export const dictionary = {
     ar: 'عيادة تجميل ومنتجات عناية بالبشرة',
     en: 'Beauty clinic & skincare products',
   },
-  'hero.title.line1': { ar: 'عناية بالبشرة', en: 'Skincare with' },
-  'hero.title.line2': { ar: 'بخبرة', en: 'clinical' },
-  'hero.title.accent': { ar: 'متخصصة', en: 'expertise' },
+  'hero.title.line1': { ar: 'مع ديرما كير بيوتي', en: 'With Dermacare Beauty' },
+  'hero.title.line2': { ar: 'بشرتك أجمل .. كل يوم', en: 'your skin is lovelier, every day' },
   'hero.subtitle': {
     ar: 'Dermacare Beauty Clinic',
     en: 'ديرما كير بيوتي كلينك',
   },
   'hero.body': {
-    ar: 'نجمع بين خبرة عيادة التجميل ومنتجات العناية المختارة بعناية، لنقدّم لك روتيناً واضحاً وبسيطاً تثقين به كل يوم.',
-    en: 'We bring the care of a beauty clinic together with a carefully selected range of skincare, so your daily routine stays simple, clear and dependable.',
+    ar: 'مستحضرات تجميل وعناية بالبشرة عالية الجودة',
+    en: 'High-quality beauty and skincare preparations',
   },
   'hero.cta.primary': { ar: 'اكتشفي منتجاتنا', en: 'Explore Products' },
   'hero.cta.secondary': { ar: 'تعرفي علينا', en: 'About Us' },
@@ -57,6 +54,38 @@ export const dictionary = {
     en: 'Carefully chosen products and personal attention for every client.',
   },
   'hero.scroll': { ar: 'تابعي للأسفل', en: 'Scroll' },
+
+  // ── Trust strip ───────────────────────────────────────────────────────────
+  'trust.quality.title': { ar: 'جودة مضمونة', en: 'Assured quality' },
+  'trust.quality.body': {
+    ar: 'منتجات نختارها ونستخدمها في العيادة.',
+    en: 'Products we choose and use in the clinic.',
+  },
+  'trust.safe.title': { ar: 'مستحضرات آمنة', en: 'Safe preparations' },
+  'trust.safe.body': {
+    ar: 'على بشرتك، وبإرشاد من فريق العيادة.',
+    en: 'On your skin, guided by the clinic team.',
+  },
+  'trust.delivery.title': { ar: 'توصيل سريع', en: 'Fast delivery' },
+  'trust.delivery.body': {
+    ar: 'لكافة أنحاء السودان.',
+    en: 'To anywhere in Sudan.',
+  },
+
+  // ── Beauty banner ─────────────────────────────────────────────────────────
+  'banner.title': {
+    ar: 'لأن جمالك يستحق الأفضل دائماً',
+    en: 'Because your beauty always deserves the best',
+  },
+  'banner.cta': { ar: 'اكتشفي المزيد', en: 'Discover more' },
+
+  // ── Contact band ──────────────────────────────────────────────────────────
+  'band.title': { ar: 'تواصلي معنا', en: 'Get in touch' },
+  'band.body': {
+    ar: 'لأي استفسار أو مساعدة، نحن دائماً في خدمتك.',
+    en: 'For any question or help, we are always at your service.',
+  },
+  'band.cta': { ar: 'تواصل معنا', en: 'Contact us' },
 
   // ── Brand introduction ────────────────────────────────────────────────────
   'intro.eyebrow': { ar: 'من نحن', en: 'Our brand' },
@@ -93,13 +122,12 @@ export const dictionary = {
   },
 
   // ── Products ──────────────────────────────────────────────────────────────
-  'products.eyebrow': { ar: 'المنتجات', en: 'The range' },
-  'products.title': { ar: 'تحضيرات ديرما كير', en: 'The Dermacare preparations' },
+  'products.title': { ar: 'منتجاتنا المميزة', en: 'Our featured products' },
   'products.lead': {
-    ar: 'تركيبات نحضّرها في العيادة ونتابع نتيجتها معك. اسألينا عن أي منتج وسنرشدك إلى المناسب لبشرتك.',
-    en: 'Preparations we make at the clinic and follow up on with you. Ask us about any of them and we will point you to the one that suits your skin.',
+    ar: 'مجموعة مختارة من أفضل منتجات العناية بالبشرة',
+    en: 'A selected range of the best skincare essentials',
   },
-  'products.view': { ar: 'عرض التفاصيل', en: 'View Product' },
+  'products.view': { ar: 'عرض المنتج', en: 'View product' },
   'products.inquire': { ar: 'استفسري عن المنتج', en: 'Ask about this' },
   'products.addToCart': { ar: 'أضيفي إلى السلة', en: 'Add to Cart' },
   'products.priceOnRequest': { ar: 'السعر عند الطلب', en: 'Price on request' },
@@ -240,7 +268,7 @@ export const dictionary = {
   },
 
   // ── About ─────────────────────────────────────────────────────────────────
-  'about.eyebrow': { ar: 'قصة العلامة', en: 'Brand story' },
+  'about.eyebrow': { ar: 'قصتنا', en: 'Our story' },
   'about.title': { ar: 'بدأنا بسؤال بسيط', en: 'It started with a simple question' },
   'about.body1': {
     ar: 'لماذا يصعب على الكثيرات في السودان العثور على عناية موثوقة ببشرتهن؟ منتجات كثيرة، نصائح متضاربة، ووعود كبيرة بلا متابعة.',
@@ -262,7 +290,7 @@ export const dictionary = {
     ar: 'مساحة عناية هادئة بألوان فاتحة ومستحضرات بشرة',
     en: 'A calm, light-toned care space with skincare products',
   },
-  'about.cta': { ar: 'تواصلي معنا', en: 'Get in touch' },
+  'about.cta': { ar: 'تعرفي على المزيد', en: 'Learn more' },
 
   // ── Contact ───────────────────────────────────────────────────────────────
   'contact.eyebrow': { ar: 'تواصل معنا', en: 'Contact' },
@@ -339,6 +367,20 @@ export const dictionary = {
     en: 'Please confirm availability and the total price.',
   },
   'shop.browse': { ar: 'تصفحي المنتجات', en: 'Browse the products' },
+
+  // ── Account ───────────────────────────────────────────────────────────────
+  'account': { ar: 'حسابي', en: 'Account' },
+  /* There is no sign-in and no server, so the panel says exactly where the
+     visitor's data lives instead of implying an account that does not exist. */
+  'account.intro': {
+    ar: 'لا يحتاج الموقع إلى تسجيل دخول. تُحفظ مفضلتك وسلتك في هذا المتصفح وحده، ولا تُرسل إلى أي مكان حتى ترسلي الطلب بنفسك.',
+    en: 'This site needs no sign-in. Your saved items and order list stay in this browser alone, and nothing is sent anywhere until you send the order yourself.',
+  },
+  'account.saved': { ar: 'منتجات محفوظة', en: 'Saved products' },
+  'account.listed': { ar: 'قطع في السلة', en: 'Items on the list' },
+  'account.language': { ar: 'لغة الموقع', en: 'Site language' },
+  'account.help': { ar: 'تحتاجين مساعدة؟', en: 'Need help?' },
+  'account.help.action': { ar: 'تواصلي معنا على واتساب', en: 'Message us on WhatsApp' },
 
   // ── Shared ────────────────────────────────────────────────────────────────
   'common.imageUnavailable': { ar: 'الصورة غير متوفرة', en: 'Image unavailable' },

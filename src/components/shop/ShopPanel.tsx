@@ -1,18 +1,19 @@
-import { Heart, Minus, Plus, ShoppingBag, Trash2, X } from 'lucide-react'
+import { Heart, MessageCircle, Minus, Plus, ShoppingBag, Trash2, X } from 'lucide-react'
 import { AnimatePresence, m, useReducedMotion } from 'motion/react'
 import { whatsappLink } from '../../config/business'
 import { products, type Product } from '../../data/products'
 import { useLanguage } from '../../i18n/useLanguage'
 import { useShop } from '../../shop/useShop'
 import { Figure } from '../primitives/Figure'
+import { LanguageSwitcher } from '../primitives/LanguageSwitcher'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
 const byId = new Map(products.map((product) => [product.id, product]))
 
 /*
-  One sheet, two modes. It slides up from the bottom bar on phones and settles
-  into a side drawer once there is room for one.
+  One sheet, three modes. It slides up from the bottom bar on phones and settles
+  into a centred dialog once there is room for one.
 */
 export function ShopPanel() {
   const { t } = useLanguage()
@@ -20,7 +21,8 @@ export function ShopPanel() {
   const reduceMotion = useReducedMotion()
 
   const isOpen = panel !== null
-  const title = panel === 'cart' ? t('shop.cart') : t('shop.favourites')
+  const title =
+    panel === 'cart' ? t('shop.cart') : panel === 'account' ? t('account') : t('shop.favourites')
 
   return (
     <AnimatePresence>
@@ -62,7 +64,13 @@ export function ShopPanel() {
               </button>
             </header>
 
-            {panel === 'cart' ? <CartBody /> : <FavouritesBody />}
+            {panel === 'cart' ? (
+              <CartBody />
+            ) : panel === 'account' ? (
+              <AccountBody />
+            ) : (
+              <FavouritesBody />
+            )}
           </m.div>
         </m.div>
       )}
@@ -150,6 +158,80 @@ function FavouritesBody() {
         </li>
       ))}
     </ul>
+  )
+}
+
+/*
+  There is no sign-in and no server behind this site, so "my account" is what it
+  honestly can be: the two local lists, the language preference, and a way to
+  reach a human. It states where the data lives rather than implying an account.
+*/
+function AccountBody() {
+  const { t } = useLanguage()
+  const { favouriteCount, cartCount, openPanel } = useShop()
+
+  const help = whatsappLink(t('contact.whatsapp.prefill'))
+
+  return (
+    <div className="overflow-y-auto overscroll-contain px-4 py-5 sm:px-6 sm:py-6">
+      <p className="text-sm leading-[1.8] text-ink-soft">{t('account.intro')}</p>
+
+      <div className="mt-5 grid grid-cols-2 gap-3">
+        <AccountStat
+          label={t('account.saved')}
+          value={favouriteCount}
+          onClick={() => openPanel('favourites')}
+        />
+        <AccountStat
+          label={t('account.listed')}
+          value={cartCount}
+          onClick={() => openPanel('cart')}
+        />
+      </div>
+
+      <div className="mt-5 flex items-center justify-between gap-4 border-t border-line pt-5">
+        <span className="text-sm font-semibold text-ink">{t('account.language')}</span>
+        <LanguageSwitcher />
+      </div>
+
+      {help !== '' && (
+        <div className="mt-5 border-t border-line pt-5">
+          <p className="text-sm font-semibold text-ink">{t('account.help')}</p>
+          <a
+            href={help}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-teal text-sm font-bold text-white transition-colors duration-250 hover:bg-teal-deep active:scale-[0.98]"
+          >
+            <MessageCircle aria-hidden="true" className="size-4.5" strokeWidth={1.9} />
+            {t('account.help.action')}
+          </a>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function AccountStat({
+  label,
+  value,
+  onClick,
+}: {
+  label: string
+  value: number
+  onClick: () => void
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="rounded-2xl border border-line-teal bg-mist px-4 py-4 text-start transition-colors duration-250 hover:border-teal"
+    >
+      <span className="block text-[1.5rem] leading-none font-extrabold text-teal tabular-nums">
+        {value}
+      </span>
+      <span className="mt-2 block text-xs leading-snug font-semibold text-ink-soft">{label}</span>
+    </button>
   )
 }
 

@@ -1,8 +1,7 @@
-import { ArrowDown, ArrowRight, ShieldCheck } from 'lucide-react'
+import { ArrowDown, ArrowRight } from 'lucide-react'
 import { m, useReducedMotion } from 'motion/react'
 import { useLanguage } from '../../i18n/useLanguage'
 import { ButtonLink } from '../primitives/Button'
-import { Figure } from '../primitives/Figure'
 import { withBase } from '../../lib/asset'
 
 const ease = [0.22, 1, 0.36, 1] as const
@@ -10,7 +9,7 @@ const ease = [0.22, 1, 0.36, 1] as const
 const BANNER = '/images/hero-banner.webp'
 
 export function Hero() {
-  const { t, lang } = useLanguage()
+  const { t } = useLanguage()
   const reduceMotion = useReducedMotion()
 
   // Staggered entrance; skipped entirely for reduced-motion users.
@@ -24,90 +23,57 @@ export function Hero() {
         }
 
   return (
-    <section id="home" aria-labelledby="hero-title" className="relative overflow-hidden bg-white">
-      {/* Tinted clinical field. On phones it is the whole backdrop; from `lg` it
-          sits under the photograph and only shows through the scrim. */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-teal-tint/70 via-mist/70 via-65% to-white" />
-        <div className="absolute -top-28 -start-24 size-[26rem] rounded-full bg-teal-tint/70 blur-3xl sm:size-[34rem]" />
-        <div className="absolute inset-0 opacity-40 [background-image:radial-gradient(var(--color-teal-muted)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(to_bottom,black,transparent_65%)]" />
-      </div>
-
-      {/* The banner photograph. From `lg` it is the backdrop of the whole hero,
-          with the copy sitting on the scrim over it; on phones there is no room
-          for that, so it becomes a rounded block above the copy instead.
-          Both are the same file, so the browser fetches it once. */}
-      <div aria-hidden="true" className="absolute inset-y-0 end-0 hidden w-[56%] lg:block xl:w-[54%]">
+    <section id="home" aria-labelledby="hero-title" className="relative isolate overflow-hidden">
+      {/* The photograph is the backdrop at every width. The copy sits on the
+          scrim over it, so there is one image, one fetch and no second crop. */}
+      <div aria-hidden="true" className="absolute inset-0">
         <img
           src={withBase(BANNER)}
           alt=""
           fetchPriority="high"
           decoding="sync"
-          className="h-full w-full object-cover object-[50%_40%] rtl:-scale-x-100"
+          className="h-full w-full object-cover object-[76%_26%] rtl:-scale-x-100 sm:object-[68%_32%] lg:object-[60%_36%]"
         />
-        {/* Soft inner edge so the photograph dissolves into the tinted field
-            instead of butting against the copy with a hard seam. */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white from-0% via-white/45 via-12% to-transparent to-42% rtl:bg-gradient-to-l" />
       </div>
 
-      <div className="shell relative pt-6 sm:pt-8 lg:hidden">
-        <m.div
-          initial={reduceMotion ? undefined : { opacity: 0, scale: 1.03 }}
-          animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.1, ease }}
-        >
-          <Figure
-            src={BANNER}
-            alt={t('hero.image.alt')}
-            ratio="wide"
-            priority
-            sizes="100vw"
-            className="ring-1 ring-line-teal sm:aspect-[16/9]"
-            imgClassName="object-[50%_36%] rtl:-scale-x-100"
-          />
-        </m.div>
-      </div>
+      {/* Two scrims: one sweeps the brand turquoise in from the copy side, the
+          other settles the base into white so the trust strip can overlap it. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-r from-teal-tint from-20% via-teal-tint/85 via-48% to-teal-tint/10 rtl:bg-gradient-to-l"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-b from-mist/70 via-transparent via-40% to-white"
+      />
 
-      <div className="shell relative grid grid-cols-4 gap-x-6 pt-10 pb-16 sm:pt-12 lg:grid-cols-12 lg:gap-x-8 lg:pt-20 lg:pb-24">
-        <div className="col-span-4 text-center lg:col-span-7 lg:text-start xl:col-span-6">
-          {/* The leading rule is dropped while the column is centred: this
-              eyebrow wraps to two lines in English, which would leave the rule
-              hanging beside the first line only. */}
-          <m.p {...rise(0.05)} className="eyebrow max-lg:before:hidden">
+      <div className="shell relative pt-10 pb-24 sm:pt-14 sm:pb-32 lg:pt-24 lg:pb-44">
+        <div className="max-w-[17rem] sm:max-w-[30rem] lg:max-w-[34rem]">
+          <m.p
+            {...rise(0.05)}
+            className="text-[0.6875rem] leading-[1.6] font-semibold tracking-[0.1em] text-teal-deep uppercase sm:text-xs sm:tracking-[0.18em]"
+          >
             {t('hero.eyebrow')}
           </m.p>
 
           <m.h1
             id="hero-title"
             {...rise(0.14)}
-            className="mt-5 text-[2.125rem] leading-[1.14] font-extrabold tracking-[-0.03em] text-ink text-balance sm:mt-7 sm:text-[3rem] sm:leading-[1.08] lg:mt-8 lg:text-display"
+            className="mt-4 text-[1.75rem] leading-[1.2] font-extrabold tracking-[-0.02em] text-ink text-balance sm:mt-6 sm:text-[2.75rem] sm:leading-[1.12] lg:text-[3.5rem]"
           >
             {t('hero.title.line1')}
-            <br />
-            {t('hero.title.line2')}{' '}
-            <span className="relative inline-block text-teal">
-              {t('hero.title.accent')}
-              <m.span
-                aria-hidden="true"
-                initial={reduceMotion ? undefined : { scaleX: 0 }}
-                animate={reduceMotion ? undefined : { scaleX: 1 }}
-                transition={{ duration: 0.9, delay: 0.7, ease }}
-                className="absolute inset-x-0 -bottom-1 h-[3px] origin-[var(--origin,left)] rounded-full bg-teal-muted rtl:[--origin:right]"
-              />
-            </span>
           </m.h1>
 
           <m.p
-            {...rise(0.24)}
-            lang={lang === 'ar' ? 'en' : 'ar'}
-            className="mt-5 text-xs font-semibold tracking-[0.14em] text-ink-faint uppercase sm:mt-7 sm:text-sm sm:tracking-[0.2em]"
+            {...rise(0.2)}
+            className="mt-2 text-[1.0625rem] leading-[1.5] font-bold text-teal text-balance sm:mt-3 sm:text-[1.5rem] lg:text-[1.875rem]"
           >
-            {t('hero.subtitle')}
+            {t('hero.title.line2')}
           </m.p>
 
           <m.p
-            {...rise(0.32)}
-            className="mx-auto mt-5 max-w-[48ch] text-[0.9375rem] leading-[1.8] text-ink-soft sm:mt-6 sm:text-[1.0625rem] lg:mx-0 lg:max-w-[42ch]"
+            {...rise(0.3)}
+            className="mt-5 max-w-[34ch] text-[0.875rem] leading-[1.8] text-ink-soft sm:mt-7 sm:text-base"
           >
             {t('hero.body')}
           </m.p>
@@ -115,8 +81,8 @@ export function Hero() {
           {/* Stacked, full-width pills on phones so the primary action is the
               obvious one; side by side from the small breakpoint up. */}
           <m.div
-            {...rise(0.42)}
-            className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center lg:justify-start"
+            {...rise(0.4)}
+            className="mt-7 flex w-[min(100%,20rem)] flex-col gap-3 sm:mt-9 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center"
           >
             <ButtonLink href="#products" size="lg" className="w-full sm:w-auto">
               {t('hero.cta.primary')}
@@ -130,22 +96,6 @@ export function Hero() {
             </ButtonLink>
           </m.div>
 
-          {/* Trust note — describes how the brand works, no claims invented. */}
-          <m.div
-            initial={reduceMotion ? undefined : { opacity: 0, y: 16 }}
-            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.6, ease }}
-            className="mx-auto mt-8 flex max-w-[26rem] items-start gap-4 rounded-2xl border border-line bg-white p-5 text-start shadow-[0_18px_48px_-24px_rgba(27,35,38,0.3)] sm:mt-10 sm:p-6 lg:mx-0"
-          >
-            <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-mist text-teal">
-              <ShieldCheck aria-hidden="true" className="size-5" strokeWidth={1.8} />
-            </span>
-            <div>
-              <p className="text-sm font-bold text-ink">{t('hero.badge.title')}</p>
-              <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{t('hero.badge.body')}</p>
-            </div>
-          </m.div>
-
           <m.a
             {...rise(0.7)}
             href="#intro"
@@ -156,6 +106,13 @@ export function Hero() {
           </m.a>
         </div>
       </div>
+
+      {/* The curve the mockup ends the hero on. An over-wide ellipse keeps the
+          arc shallow instead of bowing into a half-circle on phones. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-[-25%] -bottom-px h-10 rounded-t-[100%] bg-white sm:h-16 lg:h-24"
+      />
     </section>
   )
 }

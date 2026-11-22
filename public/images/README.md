@@ -19,7 +19,8 @@ crops the subject.
 
 | File                              | Ratio    | Width | Source     | Used by |
 | --------------------------------- | -------- | ----- | ---------- | ------- |
-| `hero.webp`                       | 4:5      | 1120  | Pexels 4735904  | `Hero` |
+| `hero-banner.webp`                | 3:2      | 1800  | Pexels 6560305  | `Hero` — side panel from `lg`, rounded block above the copy on phones. Mirrored in RTL (`rtl:-scale-x-100`), so keep the subject off-centre and never include legible text in frame. |
+| `hero.webp`                       | 4:5      | 1120  | Pexels 4735904  | unused since the hero became a banner; kept as a spare product still |
 | `brand-intro.webp`                | 4:5      | 920   | Pexels 8533216  | `BrandIntro` |
 | `products/vitamin-c.webp`         | 1:1      | 720   | brand's own     | `Products` |
 | `products/pigmentation.webp`      | 1:1      | 720   | brand's own     | `Products` |

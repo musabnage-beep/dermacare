@@ -3,8 +3,11 @@ import { m, useReducedMotion } from 'motion/react'
 import { useLanguage } from '../../i18n/useLanguage'
 import { ButtonLink } from '../primitives/Button'
 import { Figure } from '../primitives/Figure'
+import { withBase } from '../../lib/asset'
 
 const ease = [0.22, 1, 0.36, 1] as const
+
+const BANNER = '/images/hero-banner.webp'
 
 export function Hero() {
   const { t, lang } = useLanguage()
@@ -22,28 +25,51 @@ export function Hero() {
 
   return (
     <section id="home" aria-labelledby="hero-title" className="relative overflow-hidden bg-white">
-      {/* Decorative backdrop for the headline column, so the copy sits on a
-          tinted clinical field rather than bare white. Every layer is a tint of
-          an existing token and stays far lighter than `ink`, so the text keeps
-          its AA contrast. */}
+      {/* Tinted clinical field. On phones it is the whole backdrop; from `lg` it
+          sits under the photograph and only shows through the scrim. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-teal-tint/70 via-mist/70 via-65% to-white lg:bg-gradient-to-br lg:from-teal-tint/80 lg:via-mist/70 lg:via-55% lg:to-white lg:rtl:bg-gradient-to-bl" />
-
-        {/* Soft blooms give the field some depth without a photograph. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-teal-tint/70 via-mist/70 via-65% to-white" />
         <div className="absolute -top-28 -start-24 size-[26rem] rounded-full bg-teal-tint/70 blur-3xl sm:size-[34rem]" />
-        <div className="absolute top-1/3 -end-24 size-[22rem] rounded-full bg-teal-muted/15 blur-3xl sm:size-[28rem]" />
-
-        {/* Concentric rings echo the clinical mark; desktop only, where there is
-            room for them to read as geometry rather than clutter. */}
-        <div className="absolute top-[8%] start-[4%] hidden size-[32rem] rounded-full border border-line-teal/70 lg:block" />
-        <div className="absolute top-[22%] start-[12%] hidden size-[20rem] rounded-full border border-line-teal/50 lg:block" />
-
-        {/* Fine dot grid, faded out before it reaches the lower copy. */}
         <div className="absolute inset-0 opacity-40 [background-image:radial-gradient(var(--color-teal-muted)_1px,transparent_1px)] [background-size:22px_22px] [mask-image:linear-gradient(to_bottom,black,transparent_65%)]" />
       </div>
 
-      <div className="shell relative grid grid-cols-4 gap-x-6 gap-y-10 pt-10 pb-16 sm:pt-14 lg:grid-cols-12 lg:items-center lg:gap-x-8 lg:gap-y-12 lg:pt-24 lg:pb-32">
-        <div className="col-span-4 text-center lg:col-span-6 lg:text-start xl:col-span-6">
+      {/* The banner photograph. From `lg` it is the backdrop of the whole hero,
+          with the copy sitting on the scrim over it; on phones there is no room
+          for that, so it becomes a rounded block above the copy instead.
+          Both are the same file, so the browser fetches it once. */}
+      <div aria-hidden="true" className="absolute inset-y-0 end-0 hidden w-[56%] lg:block xl:w-[54%]">
+        <img
+          src={withBase(BANNER)}
+          alt=""
+          fetchPriority="high"
+          decoding="sync"
+          className="h-full w-full object-cover object-[50%_40%] rtl:-scale-x-100"
+        />
+        {/* Soft inner edge so the photograph dissolves into the tinted field
+            instead of butting against the copy with a hard seam. */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white from-0% via-white/45 via-12% to-transparent to-42% rtl:bg-gradient-to-l" />
+      </div>
+
+      <div className="shell relative pt-6 sm:pt-8 lg:hidden">
+        <m.div
+          initial={reduceMotion ? undefined : { opacity: 0, scale: 1.03 }}
+          animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.1, ease }}
+        >
+          <Figure
+            src={BANNER}
+            alt={t('hero.image.alt')}
+            ratio="wide"
+            priority
+            sizes="100vw"
+            className="ring-1 ring-line-teal sm:aspect-[16/9]"
+            imgClassName="object-[50%_36%] rtl:-scale-x-100"
+          />
+        </m.div>
+      </div>
+
+      <div className="shell relative grid grid-cols-4 gap-x-6 pt-10 pb-16 sm:pt-12 lg:grid-cols-12 lg:gap-x-8 lg:pt-20 lg:pb-24">
+        <div className="col-span-4 text-center lg:col-span-7 lg:text-start xl:col-span-6">
           {/* The leading rule is dropped while the column is centred: this
               eyebrow wraps to two lines in English, which would leave the rule
               hanging beside the first line only. */}
@@ -81,7 +107,7 @@ export function Hero() {
 
           <m.p
             {...rise(0.32)}
-            className="mx-auto mt-5 max-w-[48ch] text-[0.9375rem] leading-[1.8] text-ink-soft sm:mt-6 sm:text-[1.0625rem] lg:mx-0"
+            className="mx-auto mt-5 max-w-[48ch] text-[0.9375rem] leading-[1.8] text-ink-soft sm:mt-6 sm:text-[1.0625rem] lg:mx-0 lg:max-w-[42ch]"
           >
             {t('hero.body')}
           </m.p>
@@ -104,52 +130,31 @@ export function Hero() {
             </ButtonLink>
           </m.div>
 
+          {/* Trust note — describes how the brand works, no claims invented. */}
+          <m.div
+            initial={reduceMotion ? undefined : { opacity: 0, y: 16 }}
+            animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.6, ease }}
+            className="mx-auto mt-8 flex max-w-[26rem] items-start gap-4 rounded-2xl border border-line bg-white p-5 text-start shadow-[0_18px_48px_-24px_rgba(27,35,38,0.3)] sm:mt-10 sm:p-6 lg:mx-0"
+          >
+            <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-mist text-teal">
+              <ShieldCheck aria-hidden="true" className="size-5" strokeWidth={1.8} />
+            </span>
+            <div>
+              <p className="text-sm font-bold text-ink">{t('hero.badge.title')}</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{t('hero.badge.body')}</p>
+            </div>
+          </m.div>
+
           <m.a
-            {...rise(0.56)}
+            {...rise(0.7)}
             href="#intro"
-            className="mt-14 hidden items-center gap-3 text-xs font-semibold tracking-[0.18em] text-ink-faint uppercase transition-colors duration-250 hover:text-teal lg:inline-flex"
+            className="mt-12 hidden items-center gap-3 text-xs font-semibold tracking-[0.18em] text-ink-faint uppercase transition-colors duration-250 hover:text-teal lg:inline-flex"
           >
             <ArrowDown aria-hidden="true" className="size-4 animate-bounce" />
             {t('hero.scroll')}
           </m.a>
         </div>
-
-        <m.div
-          initial={reduceMotion ? undefined : { opacity: 0, scale: 1.04 }}
-          animate={reduceMotion ? undefined : { opacity: 1, scale: 1 }}
-          transition={{ duration: 1.1, delay: 0.18, ease }}
-          className="col-span-4 lg:col-span-6 xl:col-start-7"
-        >
-          <div className="relative">
-            <Figure
-              src="/images/hero.webp"
-              alt={t('hero.image.alt')}
-              ratio="portrait"
-              priority
-              sizes="(min-width: 1024px) 560px, 100vw"
-              className="ring-1 ring-line-teal lg:aspect-[4/5]"
-            />
-
-            {/* Trust note — describes how the brand works, no claims invented.
-                Rounded and inset to match the image panel it overlaps. */}
-            <m.div
-              initial={reduceMotion ? undefined : { opacity: 0, y: 16 }}
-              animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.85, ease }}
-              className="relative mx-4 -mt-10 flex items-start gap-4 rounded-2xl border border-line bg-white p-5 text-start shadow-[0_18px_48px_-24px_rgba(27,35,38,0.3)] sm:mx-10 sm:-mt-14 sm:p-6 lg:mx-0 lg:-mt-20 lg:me-12"
-            >
-              <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-mist text-teal">
-                <ShieldCheck aria-hidden="true" className="size-5" strokeWidth={1.8} />
-              </span>
-              <div>
-                <p className="text-sm font-bold text-ink">{t('hero.badge.title')}</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
-                  {t('hero.badge.body')}
-                </p>
-              </div>
-            </m.div>
-          </div>
-        </m.div>
       </div>
     </section>
   )

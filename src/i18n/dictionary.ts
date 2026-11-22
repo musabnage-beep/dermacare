@@ -46,8 +46,8 @@ export const dictionary = {
   'hero.cta.primary': { ar: 'اكتشفي منتجاتنا', en: 'Explore Products' },
   'hero.cta.secondary': { ar: 'تعرفي علينا', en: 'About Us' },
   'hero.image.alt': {
-    ar: 'زجاجات عناية بالبشرة على سطح فاتح بإضاءة طبيعية',
-    en: 'Skincare bottles arranged on a light surface in natural daylight',
+    ar: 'امرأة تضع كريم العناية على بشرتها وقد لفّت شعرها بمنشفة',
+    en: 'A woman applying skincare cream to her face, her hair wrapped in a towel',
   },
   'hero.badge.title': { ar: 'عناية موثوقة', en: 'Care you can trust' },
   'hero.badge.body': {

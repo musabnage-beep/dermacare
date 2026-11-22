@@ -3,6 +3,7 @@ import { Header } from './components/layout/Header'
 import { MobileNav } from './components/layout/MobileNav'
 import { WhatsAppOrder } from './components/layout/WhatsAppOrder'
 import { SeoHead } from './components/SeoHead'
+import { ShopPanel } from './components/shop/ShopPanel'
 import { About } from './components/sections/About'
 import { BrandIntro } from './components/sections/BrandIntro'
 import { Contact } from './components/sections/Contact'
@@ -41,6 +42,7 @@ export default function App() {
       <Footer />
       <WhatsAppOrder />
       <MobileNav />
+      <ShopPanel />
     </>
   )
 }

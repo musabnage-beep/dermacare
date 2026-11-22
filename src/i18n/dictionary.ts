@@ -11,6 +11,8 @@ export const dictionary = {
   'nav.experience': { ar: 'التجربة', en: 'Experience' },
   'nav.about': { ar: 'من نحن', en: 'About' },
   'nav.contact': { ar: 'تواصل معنا', en: 'Contact' },
+  /** The bottom bar carries five labels, so this one drops the second word. */
+  'nav.contactShort': { ar: 'تواصل', en: 'Contact' },
   'nav.shopNow': { ar: 'تسوّقي الآن', en: 'Shop Now' },
   'nav.menu': { ar: 'القائمة', en: 'Menu' },
   'nav.primary': { ar: 'التنقل الرئيسي', en: 'Primary navigation' },
@@ -303,6 +305,40 @@ export const dictionary = {
   'footer.language': { ar: 'اللغة', en: 'Language' },
   'footer.rights': { ar: 'جميع الحقوق محفوظة.', en: 'All rights reserved.' },
   'footer.backToTop': { ar: 'إلى الأعلى', en: 'Back to top' },
+
+  // ── Favourites & order list ───────────────────────────────────────────────
+  'shop.favourites': { ar: 'المفضلة', en: 'Saved' },
+  'shop.cart': { ar: 'السلة', en: 'Order list' },
+  'shop.save': { ar: 'حفظ في المفضلة', en: 'Save to favourites' },
+  'shop.unsave': { ar: 'إزالة من المفضلة', en: 'Remove from favourites' },
+  'shop.add': { ar: 'أضيفي إلى السلة', en: 'Add to list' },
+  'shop.added': { ar: 'في السلة', en: 'On the list' },
+  'shop.remove': { ar: 'إزالة', en: 'Remove' },
+  'shop.increase': { ar: 'زيادة الكمية', en: 'Increase quantity' },
+  'shop.decrease': { ar: 'إنقاص الكمية', en: 'Decrease quantity' },
+  'shop.quantity': { ar: 'الكمية', en: 'Quantity' },
+  'shop.clear': { ar: 'إفراغ السلة', en: 'Clear the list' },
+  'shop.close': { ar: 'إغلاق', en: 'Close' },
+  'shop.favourites.empty': {
+    ar: 'لم تحفظي أي منتج بعد. اضغطي على القلب في أي منتج ليظهر هنا.',
+    en: 'Nothing saved yet. Tap the heart on any product and it will appear here.',
+  },
+  'shop.cart.empty': {
+    ar: 'سلتك فارغة. أضيفي ما يعجبك ثم أرسلي الطلب عبر واتساب.',
+    en: 'Your list is empty. Add what you like, then send it over WhatsApp.',
+  },
+  'shop.cart.note': {
+    ar: 'الطلب يُرسل عبر واتساب ونؤكد لك التوفر والسعر قبل الشحن — لا يوجد دفع إلكتروني على الموقع.',
+    en: 'Orders are sent over WhatsApp; we confirm availability and price before shipping. There is no online payment on this site.',
+  },
+  'shop.cart.send': { ar: 'إرسال الطلب عبر واتساب', en: 'Send the order on WhatsApp' },
+  'shop.cart.items': { ar: 'عدد القطع', en: 'Items' },
+  'shop.order.intro': { ar: 'السلام عليكم، أرغب في طلب:', en: 'Hello, I would like to order:' },
+  'shop.order.outro': {
+    ar: 'برجاء تأكيد التوفر والسعر الإجمالي.',
+    en: 'Please confirm availability and the total price.',
+  },
+  'shop.browse': { ar: 'تصفحي المنتجات', en: 'Browse the products' },
 
   // ── Shared ────────────────────────────────────────────────────────────────
   'common.imageUnavailable': { ar: 'الصورة غير متوفرة', en: 'Image unavailable' },

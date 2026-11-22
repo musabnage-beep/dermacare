@@ -22,6 +22,13 @@ type FigureProps = {
   ratio?: Ratio
   className?: string
   imgClassName?: string
+  /**
+   * `contain` for packaging shots, where cropping the label would
+   * misrepresent the product. A prop rather than a class because
+   * `object-cover` and `object-contain` are both plain utilities — stacking
+   * them would leave the winner to stylesheet order.
+   */
+  fit?: 'cover' | 'contain'
   /** Hero imagery only — everything else lazy-loads. */
   priority?: boolean
   sizes?: string
@@ -33,6 +40,7 @@ export function Figure({
   ratio = 'portrait',
   className = '',
   imgClassName = '',
+  fit = 'cover',
   priority = false,
   sizes = '(min-width: 1024px) 50vw, 100vw',
 }: FigureProps) {
@@ -56,7 +64,9 @@ export function Figure({
           decoding={priority ? 'sync' : 'async'}
           fetchPriority={priority ? 'high' : 'auto'}
           onError={() => setFailed(true)}
-          className={`absolute inset-0 h-full w-full object-cover ${imgClassName}`}
+          className={`absolute inset-0 h-full w-full ${
+            fit === 'contain' ? 'object-contain' : 'object-cover'
+          } ${imgClassName}`}
         />
       )}
     </div>

@@ -1,8 +1,9 @@
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Heart, ShoppingBag } from 'lucide-react'
 import { business } from '../../config/business'
 import { navItems } from '../../data/navigation'
 import { useLanguage } from '../../i18n/useLanguage'
 import { useActiveSection, useScrolled } from '../../hooks/useActiveSection'
+import { useShop } from '../../shop/useShop'
 import { ButtonLink } from '../primitives/Button'
 import { LanguageSwitcher } from '../primitives/LanguageSwitcher'
 import { Logo } from '../primitives/Logo'
@@ -13,6 +14,7 @@ export function Header() {
   const { t } = useLanguage()
   const scrolled = useScrolled(16)
   const active = useActiveSection(sectionIds)
+  const { openPanel, favouriteCount, cartCount } = useShop()
 
   // "Shop Now" points at the live shop when one exists, otherwise at the
   // on-page product showcase — never at a dead link.
@@ -73,6 +75,22 @@ export function Header() {
               so the phone header would show every control at once. A variant
               always outranks a plain utility, so this hides reliably. */}
           <LanguageSwitcher className="max-sm:hidden" />
+
+          {/* Parity with the phone bottom bar, which owns these two from `md`
+              down: anything saved on a phone is still reachable on a laptop. */}
+          <ShopButton
+            icon={Heart}
+            label={t('shop.favourites')}
+            count={favouriteCount}
+            onClick={() => openPanel('favourites')}
+          />
+          <ShopButton
+            icon={ShoppingBag}
+            label={t('shop.cart')}
+            count={cartCount}
+            onClick={() => openPanel('cart')}
+          />
+
           <ButtonLink
             href={shopHref}
             target={isExternalShop ? '_blank' : undefined}
@@ -91,5 +109,40 @@ export function Header() {
         </div>
       </div>
     </header>
+  )
+}
+
+/*
+  Icon trigger for the shop sheets. Hidden below `md`, where the bottom bar
+  already carries both as full-size tap targets.
+*/
+function ShopButton({
+  icon: Icon,
+  label,
+  count,
+  onClick,
+}: {
+  icon: typeof Heart
+  label: string
+  count: number
+  onClick: () => void
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={count > 0 ? `${label} (${count})` : label}
+      className="relative hidden size-10 items-center justify-center rounded-full text-ink-soft transition-colors duration-250 hover:bg-ivory hover:text-ink md:inline-flex"
+    >
+      <Icon aria-hidden="true" className="size-5" strokeWidth={1.8} />
+      {count > 0 && (
+        <span
+          aria-hidden="true"
+          className="absolute top-1 end-1 min-w-4 rounded-full bg-teal px-1 text-center text-[0.5625rem] leading-4 font-bold text-white tabular-nums"
+        >
+          {count > 9 ? '9+' : count}
+        </span>
+      )}
+    </button>
   )
 }

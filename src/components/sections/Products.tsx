@@ -1,7 +1,8 @@
-import { ArrowUpRight, MessageCircle, ShoppingBag } from 'lucide-react'
+import { ArrowUpRight, Check, Heart, MessageCircle, ShoppingBag } from 'lucide-react'
 import { business, whatsappLink } from '../../config/business'
 import { products, type Product } from '../../data/products'
 import { useLanguage } from '../../i18n/useLanguage'
+import { useShop } from '../../shop/useShop'
 import { ButtonLink } from '../primitives/Button'
 import { Figure } from '../primitives/Figure'
 import { Reveal } from '../primitives/Reveal'
@@ -54,12 +55,14 @@ export function Products() {
 
 function ProductCard({ product }: { product: Product }) {
   const { t, pick } = useLanguage()
+  const { isFavourite, toggleFavourite, addToCart, cart } = useShop()
 
   const inquiryLink = whatsappLink(
     `${t('contact.whatsapp.prefill')} — ${t(product.nameKey)}`,
   )
   const hasOwnPage = product.url !== ''
-  const canAddToCart = business.commerce.enabled && product.price !== null
+  const saved = isFavourite(product.id)
+  const queued = (cart[product.id] ?? 0) > 0
 
   return (
     <article className="group flex h-full flex-col">
@@ -68,13 +71,33 @@ function ProductCard({ product }: { product: Product }) {
           src={product.image}
           alt={t(product.altKey)}
           ratio="square"
+          fit="contain"
           sizes="(min-width: 1024px) 360px, (min-width: 640px) 45vw, 100vw"
+          className="bg-ivory"
           imgClassName="transition-transform duration-700 ease-[var(--ease-out-soft)] group-hover:scale-[1.045]"
         />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/[0.04]"
         />
+
+        {/* Saving is local to the visitor's browser — no account required, and
+            nothing is sent anywhere until they send the order themselves. */}
+        <button
+          type="button"
+          onClick={() => toggleFavourite(product.id)}
+          aria-pressed={saved}
+          aria-label={`${saved ? t('shop.unsave') : t('shop.save')} — ${t(product.nameKey)}`}
+          className={`absolute top-3 end-3 inline-flex size-10 items-center justify-center rounded-full shadow-[0_6px_18px_-8px_rgba(27,35,38,0.4)] backdrop-blur-sm transition-colors duration-250 ${
+            saved ? 'bg-white text-teal' : 'bg-white/75 text-ink-faint hover:bg-white hover:text-ink'
+          }`}
+        >
+          <Heart
+            aria-hidden="true"
+            className={`size-4.5 ${saved ? 'fill-current' : ''}`}
+            strokeWidth={1.9}
+          />
+        </button>
       </div>
 
       <h3 className="mt-6 text-title font-bold text-ink">{t(product.nameKey)}</h3>
@@ -124,12 +147,24 @@ function ProductCard({ product }: { product: Product }) {
         )}
       </div>
 
-      {canAddToCart && (
-        <ButtonLink href={product.url} className="mt-4 w-full">
-          <ShoppingBag aria-hidden="true" className="size-4" />
-          {t('products.addToCart')}
-        </ButtonLink>
-      )}
+      {/* Builds the order list that the sheet hands to WhatsApp. It carries no
+          price, so it promises nothing the business has not confirmed. */}
+      <button
+        type="button"
+        onClick={() => addToCart(product.id)}
+        className={`mt-4 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border text-sm font-bold transition-colors duration-250 active:scale-[0.98] ${
+          queued
+            ? 'border-teal bg-teal text-white'
+            : 'border-line-teal bg-mist text-teal hover:bg-teal hover:text-white'
+        }`}
+      >
+        {queued ? (
+          <Check aria-hidden="true" className="size-4" strokeWidth={2.4} />
+        ) : (
+          <ShoppingBag aria-hidden="true" className="size-4" strokeWidth={1.9} />
+        )}
+        {queued ? t('shop.added') : t('shop.add')}
+      </button>
     </article>
   )
 }
